@@ -22,8 +22,8 @@
 	z-index: 100;
 }
 .pipe_sprite {
-	position: fixed; 
-    top: 40vh; 
+	position: fixed;
+	top: 40vh; 
     left: 100vw; 
     height: 70vh; 
     width: 6vw; 
