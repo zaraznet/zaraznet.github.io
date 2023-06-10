@@ -72,25 +72,21 @@ function play(){
     function apply_gravity(){
         if(game_state != 'Play') return;
         bird_dy = bird_dy + grativy;
-        document.addEventListener('mousedown', (e) => { 
-            if(game_state != 'Play') return;
+        document.addEventListener('mousedown', (e) => {
             img.src = 'images/Bird-2.png'; 
             bird_dy = -5.1; 
           }); 
           
           document.addEventListener('touchstart', (e) => { 
-            if(game_state != 'Play') return;
             img.src = 'images/Bird-2.png'; 
             bird_dy = -5.1; 
           });
 
           document.addEventListener('mouseup', (e) => { 
-            if(game_state != 'Play') return;
             img.src = 'images/Bird.png';
           }); 
           
           document.addEventListener('touchend', (e) => { 
-            if(game_state != 'Play') return;
             img.src = 'images/Bird.png';
           });
 
