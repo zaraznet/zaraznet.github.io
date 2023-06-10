@@ -114,7 +114,7 @@ function play(){
     function create_pipe(){
         if(game_state != 'Play') return;
 
-        if(pipe_seperation > 115){
+        if(pipe_seperation > 120){
             pipe_seperation = 0;
 
             let pipe_posi = Math.floor(Math.random() * 43) + 8;
