@@ -75,13 +75,13 @@ function play(){
         document.addEventListener('mousedown', (e) => { 
             if(game_state != 'Play') return;
             img.src = 'images/Bird-2.png'; 
-            bird_dy = -7.6; 
+            bird_dy = -7.1; 
           }); 
           
           document.addEventListener('touchstart', (e) => { 
             if(game_state != 'Play') return;
             img.src = 'images/Bird-2.png'; 
-            bird_dy = -7.6; 
+            bird_dy = -7.1; 
           });
 
           document.addEventListener('mouseup', (e) => { 
