@@ -75,13 +75,13 @@ function play(){
         document.addEventListener('mousedown', (e) => { 
             if(game_state != 'Play') return;
             img.src = 'images/Bird-2.png'; 
-            bird_dy = -4.1; 
+            bird_dy = -5.1; 
           }); 
           
           document.addEventListener('touchstart', (e) => { 
             if(game_state != 'Play') return;
             img.src = 'images/Bird-2.png'; 
-            bird_dy = -4.1; 
+            bird_dy = -5.1; 
           });
 
           document.addEventListener('mouseup', (e) => { 
@@ -114,7 +114,7 @@ function play(){
     function create_pipe(){
         if(game_state != 'Play') return;
 
-        if(pipe_seperation > 120){
+        if(pipe_seperation > 130){
             pipe_seperation = 0;
 
             let pipe_posi = Math.floor(Math.random() * 43) + 8;
