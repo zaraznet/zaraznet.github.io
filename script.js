@@ -52,7 +52,7 @@ function play(){
                     return;
                 }else{
                     if(pipe_sprite_props.right < bird_props.left && pipe_sprite_props.right + move_speed >= bird_props.left && element.increase_score == '1'){
-                        score_val.innerHTML += 1;
+                        score_val.innerHTML =+ score_val.innerHTML + 1;
                         sound_point.play();
                     }
                     element.style.left = pipe_sprite_props.left - move_speed + 'px';
