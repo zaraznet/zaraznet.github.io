@@ -3,13 +3,8 @@ let bird = document.querySelector('.bird');
 let img = document.getElementById('bird-1');
 let sound_point = new Audio('sounds effect/point.mp3');
 let sound_die = new Audio('sounds effect/die.mp3');
-
-// getting bird element properties
 let bird_props = bird.getBoundingClientRect();
-
-// This method returns DOMReact -> top, right, bottom, left, x, y, width and height
 let background = document.querySelector('.background').getBoundingClientRect();
-
 let score_val = document.querySelector('.score_val');
 let message = document.querySelector('.message');
 let score_title = document.querySelector('.score_title');
@@ -57,7 +52,7 @@ function play(){
                     return;
                 }else{
                     if(pipe_sprite_props.right < bird_props.left && pipe_sprite_props.right + move_speed >= bird_props.left && element.increase_score == '1'){
-                        score_val.innerHTML =+ score_val.innerHTML + 1;
+                        score_val.innerHTML += 1;
                         sound_point.play();
                     }
                     element.style.left = pipe_sprite_props.left - move_speed + 'px';
@@ -68,40 +63,39 @@ function play(){
     }
     requestAnimationFrame(move);
 
-    let bird_dy = 0;
-    function apply_gravity(){
-        if(game_state != 'Play') return;
-        bird_dy = bird_dy + grativy;
-        document.addEventListener('mousedown', (e) => {
-            img.src = 'images/Bird-2.png'; 
-            bird_dy = -5.1; 
-          }); 
-          
-          document.addEventListener('touchstart', (e) => { 
-            img.src = 'images/Bird-2.png'; 
-            bird_dy = -5.1; 
-          });
+    let birddy = 0;
 
-          document.addEventListener('mouseup', (e) => { 
-            img.src = 'images/Bird.png';
-          }); 
-          
-          document.addEventListener('touchend', (e) => { 
-            img.src = 'images/Bird.png';
-          });
-
-        if(bird_props.top <= 0 || bird_props.bottom >= background.bottom){
-            game_state = 'End';
-            message.style.left = '28vw';
-            window.location.reload();
-            message.classList.remove('messageStyle');
-            return;
-        }
-        bird.style.top = bird_props.top + bird_dy + 'px';
-        bird_props = bird.getBoundingClientRect();
-        requestAnimationFrame(apply_gravity);
+    function applygravity(){ 
+        if(game_state != 'Play') return; 
+        birddy = birddy + grativy;
+        document.addEventListener('mousedown', handleEvent);
+        document.addEventListener('touchstart', handleEvent);
+        document.addEventListener('mouseup', handleEvent);  
+        document.addEventListener('touchend', handleEvent); 
+        if(bird_props.top <= 0 || bird_props.bottom >= background.bottom){ 
+            gamestate = 'End'; 
+            message.style.left = '28vw'; 
+            window.location.reload(); 
+            message.classList.remove('messageStyle'); 
+            return; 
+        } 
+        bird.style.top = bird_props.top + birddy + 'px'; 
+        bird_props = bird.getBoundingClientRect(); 
+        requestAnimationFrame(applygravity); 
     }
-    requestAnimationFrame(apply_gravity);
+    
+    function handleEvent(e) {
+        if (game_state != 'Play') return;
+        if (e.type ==='mousedown'||e.type ==='touchstart') {
+            img.src = 'images/Bird-2.png';  
+            birddy = -5.1;  
+        }
+        else if (e.type ==='mouseup'||e.type ==='touchend') {
+            img.src = 'images/Bird.png'
+        }
+    }
+
+    requestAnimationFrame(applygravity);
 
     let pipe_seperation = 0;
 
